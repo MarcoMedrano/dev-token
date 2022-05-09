@@ -1,0 +1,117 @@
+{
+  "contractName": "DevToken",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/DevToken.sol\":\"DevToken\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/DevToken.sol\":{\"keccak256\":\"0xfc8043b23de0e9cba3317969b794877e42fb712b6ec9a192c5468dd30c9fa165\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dd86c0f8cb27ab28ca1c849360fa9daf55d62552512882be61317be262c21100\",\"dweb:/ipfs/QmNiQu3RQj6By8Nh3gdGVov63gdPefjbfSyAdBtqYwWtHe\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220b47fec9feaaae4ead3b61e795720c89486467f8f67267482b42fcdb74a504b6464736f6c634300080d0033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220b47fec9feaaae4ead3b61e795720c89486467f8f67267482b42fcdb74a504b6464736f6c634300080d0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "462:119:0:-:0;;;559:20;;;;;;;;;;462:119;;;;;;",
+  "deployedSourceMap": "462:119:0:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\n// contract Migrations {\n//   address public owner = msg.sender;\n//   uint public last_completed_migration;\n\n//   modifier restricted() {\n//     require(\n//       msg.sender == owner,\n//       \"This function is restricted to the contract's owner\"\n//     );\n//     _;\n//   }\n\n//   function setCompleted(uint completed) public restricted {\n//     last_completed_migration = completed;\n//   }\n// }\n\ncontract DevToken {\n  \n  // Constructor is a function that will run when the Token is created.\n  constructor() {\n\n  }\n}",
+  "sourcePath": "D:\\lr.mm\\dev-token\\contracts\\DevToken.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/DevToken.sol",
+    "exportedSymbols": {
+      "DevToken": [
+        6
+      ]
+    },
+    "id": 7,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "DevToken",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "DevToken",
+        "nameLocation": "471:8:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "573:6:0",
+              "statements": []
+            },
+            "id": 5,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "570:2:0"
+            },
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "573:0:0"
+            },
+            "scope": 6,
+            "src": "559:20:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "462:119:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:549:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-05-08T18:08:52.787Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
