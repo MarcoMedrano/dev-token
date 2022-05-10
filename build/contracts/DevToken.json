@@ -16,7 +16,7 @@
   "sourceMap": "462:119:0:-:0;;;559:20;;;;;;;;;;462:119;;;;;;",
   "deployedSourceMap": "462:119:0:-:0;;;;;",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\n// contract Migrations {\n//   address public owner = msg.sender;\n//   uint public last_completed_migration;\n\n//   modifier restricted() {\n//     require(\n//       msg.sender == owner,\n//       \"This function is restricted to the contract's owner\"\n//     );\n//     _;\n//   }\n\n//   function setCompleted(uint completed) public restricted {\n//     last_completed_migration = completed;\n//   }\n// }\n\ncontract DevToken {\n  \n  // Constructor is a function that will run when the Token is created.\n  constructor() {\n\n  }\n}",
-  "sourcePath": "D:\\lr.mm\\dev-token\\contracts\\DevToken.sol",
+  "sourcePath": "/Users/marco/lr.mm/dev-token/contracts/DevToken.sol",
   "ast": {
     "absolutePath": "project:/contracts/DevToken.sol",
     "exportedSymbols": {
@@ -101,9 +101,17 @@
     "name": "solc",
     "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x339872AEE2D570B56e6cf5d372CfCD9C1ab506e4",
+      "transactionHash": "0xd2311c6527d3d24c8bb8f232fd2c6bc0616a5a3f17b82c2fe5992be93d849d5e"
+    }
+  },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-05-08T18:08:52.787Z",
+  "updatedAt": "2022-05-10T03:08:03.079Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
