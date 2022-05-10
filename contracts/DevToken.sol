@@ -30,6 +30,31 @@ contract DevToken {
   event Transfer(address indexed from, address indexed to, uint256 value);
 
   /**
+  * @notice decimals will return the number of decimal precision the Token is deployed with
+  */
+  function decimals() external view returns (uint8) {
+    return _decimals;
+  }
+  /**
+  * @notice symbol will return the Token's symbol 
+  */
+  function symbol() external view returns (string memory){
+    return _symbol;
+  }
+  /**
+  * @notice name will return the Token's symbol 
+  */
+  function name() external view returns (string memory){
+    return _name;
+  }
+  /**
+  * @notice totalSupply will return the tokens total supply of tokens
+  */
+  function totalSupply() external view returns (uint256){
+    return _totalSupply;
+  }
+
+  /**
   * @notice constructor will be triggered when we create the Smart contract
   * _name = name of the token
   * _short_symbol = Short Symbol name for the token
