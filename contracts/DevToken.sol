@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
+import "./Ownable.sol";
 /**
 * @notice DevToken is a development token that we use to learn how to code solidity 
 * and what BEP-20 interface requires
 */
-contract DevToken {
+contract DevToken is Ownable{
   
 
   /**
@@ -125,7 +126,7 @@ contract DevToken {
   *   - msg.sender must be the token owner
   *
    */
-  function burn(address account, uint256 amount) public returns(bool) {
+  function burn(address account, uint256 amount) public onlyOwner returns(bool) {
     _burn(account, amount);
     return true;
   }
@@ -138,7 +139,7 @@ contract DevToken {
   *   - msg.sender must be the token owner
   *
    */
-  function mint(address account, uint256 amount) public returns(bool){
+  function mint(address account, uint256 amount) public onlyOwner returns(bool){
     _mint(account, amount);
     return true;
   }

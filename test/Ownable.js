@@ -1,6 +1,6 @@
 const { assert } = require("chai");
 
-const Ownable = artifacts.require("Ownable");
+const Ownable = artifacts.require("DevToken");
 
 // Start a test series named Ownable, it will use 10 test accounts 
 contract("Ownable", async accounts => {
