@@ -81,14 +81,14 @@ contract DevToken {
     return _balances[account];
   } 
  
- /**
-  * @notice mint will create tokens on the address inputted and then increase the total supply
+  /**
+  * @notice _mint will create tokens on the address inputted and then increase the total supply
   *
   * It will also emit an Transfer event, with sender set to zero address (adress(0))
   * 
   * Requires that the address that is recieveing the tokens is not zero address
   */
-  function mint(address account, uint256 amount) public {
+  function _mint(address account, uint256 amount) internal {
     require(account != address(0), "DevToken: cannot mint to zero address");
 
     // Increase total supply
@@ -99,14 +99,14 @@ contract DevToken {
     emit Transfer(address(0), account, amount);
   }
   /**
-  * @notice burn will destroy tokens from an address inputted and then decrease total supply
+  * @notice _burn will destroy tokens from an address inputted and then decrease total supply
   * An Transfer event will emit with receiever set to zero address
   * 
   * Requires 
   * - Account cannot be zero
   * - Account balance has to be bigger or equal to amount
   */
-  function burn(address account, uint256 amount) public {
+  function _burn(address account, uint256 amount) internal {
     require(account != address(0), "DevToken: cannot burn from zero address");
     require(_balances[account] >= amount, "DevToken: Cannot burn more than the account owns");
 
@@ -116,6 +116,31 @@ contract DevToken {
     _totalSupply = _totalSupply - amount;
     // Emit event, use zero address as reciever
     emit Transfer(account, address(0), amount);
+  }
+  /**
+  * @notice burn is used to destroy tokens on an address
+  * 
+  * See {_burn}
+  * Requires
+  *   - msg.sender must be the token owner
+  *
+   */
+  function burn(address account, uint256 amount) public returns(bool) {
+    _burn(account, amount);
+    return true;
+  }
+
+    /**
+  * @notice mint is used to create tokens and assign them to msg.sender
+  * 
+  * See {_mint}
+  * Requires
+  *   - msg.sender must be the token owner
+  *
+   */
+  function mint(address account, uint256 amount) public returns(bool){
+    _mint(account, amount);
+    return true;
   }
 
   /**
