@@ -4,7 +4,7 @@ const DevToken = artifacts.require("DevToken");
 
 // Start a test series named DevToken, it will use 10 test accounts 
 contract("DevToken", async accounts => {
-    console.log("Accounts ", accounts)
+    // console.log("Accounts ", accounts)
     // each it is a new test, and we name our first test initial supply
     it("initial supply", async () => {
         // wait until devtoken is deplyoed, store the results inside devToken

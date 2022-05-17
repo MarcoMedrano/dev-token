@@ -261,4 +261,18 @@ contract DevToken is Ownable, Stakeable{
       _approve(msg.sender, spender, _allowances[msg.sender][spender]-amount);
       return true;
     }
+
+
+    /**
+    * Add functionality like burn to the _stake afunction
+    *
+     */
+    function stake(uint256 _amount) public {
+      // Make sure staker actually is good for it
+      require(_amount < _balances[msg.sender], "DevToken: Cannot stake more than you own");
+
+        _stake(_amount);
+                // Burn the amount of tokens on the sender
+        _burn(msg.sender, _amount);
+    }
 }
