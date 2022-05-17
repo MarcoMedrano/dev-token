@@ -1,0 +1,131 @@
+{
+  "contractName": "Stakeable",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"constructor\":{\"notice\":\"Constructor,since this contract is not ment to be used without inheritance push once to stakeholders for it to work proplerly\"}},\"notice\":\"Stakeable is a contract who is ment to be inherited by other contract that wants Staking capabilities\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Stakable.sol\":\"Stakeable\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Stakable.sol\":{\"keccak256\":\"0xfa6d76cc0220568071ecd8d9dd7e42e35af7451e7938d5cecf121a006333bc99\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b7b23c40d715ace0bea7e8acf0a38749b41ae1dcb686e409267ab9749e884f72\",\"dweb:/ipfs/QmPrHiaB9pEviikYHU9LBXWuHLDpDZ7UauF6aiAnTYuqDG\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220c0fb9f28f7c9eb8368a47c94fef758deab8dae5848a0067386f2ed9fe444ea7c64736f6c634300080d0033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220c0fb9f28f7c9eb8368a47c94fef758deab8dae5848a0067386f2ed9fe444ea7c64736f6c634300080d0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "177:213:2:-:0;;;366:21;;;;;;;;;;177:213;;;;;;",
+  "deployedSourceMap": "177:213:2:-:0;;;;;",
+  "source": "\n// SPDX-License-Identifier: MIT\npragma solidity ^0.8.4;\n\n/**\n* @notice Stakeable is a contract who is ment to be inherited by other contract that wants Staking capabilities\n*/\ncontract Stakeable {\n\n\n    /**\n    * @notice Constructor,since this contract is not ment to be used without inheritance\n    * push once to stakeholders for it to work proplerly\n     */\n    constructor() {\n    }\n\n}",
+  "sourcePath": "/Users/marco/lr.mm/dev-token/contracts/Stakable.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Stakable.sol",
+    "exportedSymbols": {
+      "Stakeable": [
+        682
+      ]
+    },
+    "id": 683,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 675,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Stakeable",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 676,
+          "nodeType": "StructuredDocumentation",
+          "src": "58:118:2",
+          "text": " @notice Stakeable is a contract who is ment to be inherited by other contract that wants Staking capabilities"
+        },
+        "fullyImplemented": true,
+        "id": 682,
+        "linearizedBaseContracts": [
+          682
+        ],
+        "name": "Stakeable",
+        "nameLocation": "186:9:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 680,
+              "nodeType": "Block",
+              "src": "380:7:2",
+              "statements": []
+            },
+            "documentation": {
+              "id": 677,
+              "nodeType": "StructuredDocumentation",
+              "src": "204:157:2",
+              "text": " @notice Constructor,since this contract is not ment to be used without inheritance\n push once to stakeholders for it to work proplerly"
+            },
+            "id": 681,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 678,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "377:2:2"
+            },
+            "returnParameters": {
+              "id": 679,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "380:0:2"
+            },
+            "scope": 682,
+            "src": "366:21:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 683,
+        "src": "177:213:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:357:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-05-17T00:26:14.176Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "constructor": {
+        "notice": "Constructor,since this contract is not ment to be used without inheritance push once to stakeholders for it to work proplerly"
+      }
+    },
+    "notice": "Stakeable is a contract who is ment to be inherited by other contract that wants Staking capabilities",
+    "version": 1
+  }
+}

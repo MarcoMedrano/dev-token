@@ -2,11 +2,12 @@
 pragma solidity ^0.8.4;
 
 import "./Ownable.sol";
+import "./Stakable.sol";
 /**
 * @notice DevToken is a development token that we use to learn how to code solidity 
 * and what BEP-20 interface requires
 */
-contract DevToken is Ownable{
+contract DevToken is Ownable, Stakeable{
   
 
   /**
