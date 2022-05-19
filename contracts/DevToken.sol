@@ -262,7 +262,6 @@ contract DevToken is Ownable, Stakeable{
       return true;
     }
 
-
     /**
     * Add functionality like burn to the _stake afunction
     *
@@ -274,5 +273,15 @@ contract DevToken is Ownable, Stakeable{
         _stake(_amount);
                 // Burn the amount of tokens on the sender
         _burn(msg.sender, _amount);
+    }
+
+    /**
+    * @notice withdrawStake is used to withdraw stakes from the account holder
+     */
+    function withdrawStake(uint256 amount, uint256 stake_index)  public {
+
+      uint256 amount_to_mint = _withdrawStake(amount, stake_index);
+      // Return staked tokens to user
+      _mint(msg.sender, amount_to_mint);
     }
 }
