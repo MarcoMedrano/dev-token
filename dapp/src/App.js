@@ -5,6 +5,11 @@ import Web3 from 'web3-eth'
 
 
 function App() {
+  // Adding our Devtoken state and a set function to assign it
+  const [devToken, setDevToken] = useState(0);
+    // accounts is the metamask accounts and setAccounts is used to assign them
+    const [accounts, setAccounts] = useState(0);
+    const [loaded, setLoaded] = useState(false);
   // this will trigger whenever the App function is called, which index.js runs at startup
   useEffect(() => {
     // Here we check if there is web3 support
@@ -13,6 +18,7 @@ function App() {
       // Check if its MetaMask that is installed
       if (window.web3.currentProvider.isMetaMask === true) {
         connectMetaMask();
+        connectToSelectedNetwork();
       } else {
         // Another web3 provider, add support if you want
       }
@@ -22,6 +28,20 @@ function App() {
       throw new Error("No web3 support, redirect user to a download page or something :) ");
     }
   }, []);
+
+  useEffect(() => {
+    // Only get profile if we are completly loaded 
+    if (loaded && (accounts !== 0)) {
+      // get user info
+      console.log("Accounts ", accounts);
+      getUserProfile()
+    } else {
+    // dirty trick to trigger reload if something went wrong
+      setTimeout(setLoaded(true), 1000);
+    }
+    // This here subscribes to changes on the loaded and accounts state
+  }, [loaded, accounts]);
+
   // connectMetaMask is used to connect to MetaMask and ask permission to grab account information
   function connectMetaMask() {
     // We need to make the connection to MetaMask work.
@@ -29,13 +49,76 @@ function App() {
     window.web3.requestAccounts()
     .then((result) => {
       // Whenever the user accepts this will trigger
-      console.log(result)
+      setAccounts(result);
     })
     .catch((error) => {
       // Handle errors, such as when a user does not accept
       throw new Error(error);
     });
   };
+
+    // getABI loads the ABI of the contract
+  // This is an async function so we can wait for it to finish executing
+  async function getABI(){
+    // DevToken.json should be placed inside the public folder so we can reach it
+    let ABI = "";
+    await fetch('./DevToken.json', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      // We have a Response, make sure its 200 or throw an error
+      if (response.status == 200) {
+        // This is actually also a promise so we need to chain it to grab data
+        return response.json();
+      } else {
+        throw new Error('Error fetching ABI');
+      }
+    }).then((data) => {
+      // We have the data now, set it using the state
+      ABI = data;
+    }).catch((error) => {
+      throw new Error(error);
+    });
+
+    return ABI;
+  }
+
+    // getContractAddress returns the address of the contract
+  // hardcoded :) 
+  function getContractAddress() {
+    return "0x09eEaaa77674100eD21eE1DDcF4F0DA87668E925";
+  }
+
+  async function connectToSelectedNetwork() {
+    // This will connect to the selected network inside MetaMask
+    const web3 = new Web3(Web3.givenProvider);
+    // Set the ABI of the Built contract so we can interact with it
+    const abi = await getABI();
+    const address = getContractAddress();
+
+    // Make a new instance of the contract by giving the address and abi
+    const devtoken = new web3.Contract(abi.abi, address);
+    // Set the state of the app by passing the contract so we can reach it from other places
+    setDevToken(devtoken);
+  }
+
+  
+  
+  // getUserProfile will fetch account information from the block chain network
+  function getUserProfile() {
+    // Let's grab the token total supply, the method is named the same as in the Solidity code, and add call() to execute it. 
+    // We can also get the response using a callback. I do recommend this method most times as we dont know how long the executions can take.
+    devToken.methods.totalSupply().call()
+      .then((result) => {
+        console.log("DevToken TotalSupply", result);
+      })
+      .catch((error) => {
+        throw new Error(error);
+      })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
