@@ -103,7 +103,7 @@ function App() {
     // getContractAddress returns the address of the contract
   // hardcoded :) 
   function getContractAddress() {
-    return "0x5BE35B9FA471d096B3bEfd2b79C46Bb20429F893";
+    return "0x38117d1CfE395Ea5233Ba62fA8c934F476781E5F";
   }
 
   async function connectToSelectedNetwork() {
