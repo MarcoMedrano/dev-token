@@ -132,6 +132,26 @@ function App() {
     })
   }
 
+  // stake will trigger a stake on the users behalf
+  function stake() {
+    console.log("STAKE");
+    // When we trigger Transactions we should use send instead of call
+    // We should also calculate the GAS cost so we can apply the correct amount of gas
+    devToken.methods.stake(1000).estimateGas({from: accounts[0]})
+      .then((gas) => {
+        console.log("Gas estimated ", gas);
+        // We now have the gas amount, we can now send the transaction
+        devToken.methods.stake(1000).send({
+          from: accounts[0],
+          gas: gas
+        });
+        // Fake update of account by changing stake, Trigger a reload when transaction is done later
+        setAccountBalance(accountBalance-1000);
+      }).catch((error) => {
+        throw new Error(error);
+      });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -139,7 +159,8 @@ function App() {
         <p>The total supply is {totalSupply}</p>
         <p>Account balance: {accountBalance}</p>
         
-        {/* <button onClick={stake}><p>Stake</p></button> */}
+        <button onClick={stake}>Stake</button>
+        <button onClick={() => console.log("IWAT")}>Test</button>
       </header>
 
     </div>
