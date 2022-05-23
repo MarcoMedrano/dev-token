@@ -7,9 +7,12 @@ import Web3 from 'web3-eth'
 function App() {
   // Adding our Devtoken state and a set function to assign it
   const [devToken, setDevToken] = useState(0);
-    // accounts is the metamask accounts and setAccounts is used to assign them
-    const [accounts, setAccounts] = useState(0);
-    const [loaded, setLoaded] = useState(false);
+  const [accountBalance, setAccountBalance] = useState(0);
+  const [accountStakes, setAccountStakes] = useState({});
+  // accounts is the metamask accounts and setAccounts is used to assign them
+  const [accounts, setAccounts] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [totalSupply, setTotalSupply] = useState(0);
   // this will trigger whenever the App function is called, which index.js runs at startup
   useEffect(() => {
     // Here we check if there is web3 support
@@ -88,7 +91,7 @@ function App() {
     // getContractAddress returns the address of the contract
   // hardcoded :) 
   function getContractAddress() {
-    return "0x09eEaaa77674100eD21eE1DDcF4F0DA87668E925";
+    return "0x5BE35B9FA471d096B3bEfd2b79C46Bb20429F893";
   }
 
   async function connectToSelectedNetwork() {
@@ -108,22 +111,37 @@ function App() {
   
   // getUserProfile will fetch account information from the block chain network
   function getUserProfile() {
-    // Let's grab the token total supply, the method is named the same as in the Solidity code, and add call() to execute it. 
+        // Let's grab the tokens total supply, the method is named the same as in the Solidity code, and add call() to execute it. 
     // We can also get the response using a callback. I do recommend this method most times as we dont know how long the executions can take.
-    devToken.methods.totalSupply().call()
-      .then((result) => {
-        console.log("DevToken TotalSupply", result);
-      })
-      .catch((error) => {
-        throw new Error(error);
-      })
+    call(devToken.methods.totalSupply, setTotalSupply);
+    // balanceOf Requires input argument of the account to grab, so let's grab the first available account for now
+    call(devToken.methods.balanceOf, setAccountBalance, accounts[0]);
+    call(devToken.methods.hasStake, setAccountStakes, accounts[0]);
+  }
+
+  // call takes in a function to execute and runs a given callback on the response
+  function call(func, callback, ...args) {
+    // Trigger the function with the arguments
+    func(...args).call()
+    .then((result) => {
+      // Apply given callback, this is our stateSetters
+      callback(result);
+    })
+    .catch((error) => {
+      throw new Error(error);
+    })
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <p> Welcome to your DAPP application</p>
+        <p> Welcome to your DAPP</p>
+        <p>The total supply is {totalSupply}</p>
+        <p>Account balance: {accountBalance}</p>
+        
+        {/* <button onClick={stake}><p>Stake</p></button> */}
       </header>
+
     </div>
   );
 }
