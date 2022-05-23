@@ -36,14 +36,26 @@ function App() {
     // Only get profile if we are completly loaded 
     if (loaded && (accounts !== 0)) {
       // get user info
-      console.log("Accounts ", accounts);
       getUserProfile()
+      // Subscribe to Stake events
+      // Options allows us to specify filters so we dont grab all events, in this case we only select our current account in metamask
+      let options = {
+        filter: {
+            address: [accounts[0]]
+        },
+      };
+      // Our contract has a field called events which has all Available events.
+      devToken.events.Staked(options)
+      // data is when 
+      .on('data', event => console.log("Data: " , event))
+      .on('changed', changed => console.log("Changed: ", changed))
+      .on('error', err => console.log("Err: ", err))
+      .on('connected', str => console.log("Conntected: ", str))
     } else {
-    // dirty trick to trigger reload if something went wrong
-      setTimeout(setLoaded(true), 1000);
+      setTimeout(setLoaded(true), 500);
     }
-    // This here subscribes to changes on the loaded and accounts state
-  }, [loaded, accounts]);
+    // This here subscribes to changes on the loaded state
+  }, [loaded, accounts, devToken]);
 
   // connectMetaMask is used to connect to MetaMask and ask permission to grab account information
   function connectMetaMask() {
